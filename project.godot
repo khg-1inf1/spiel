@@ -11,14 +11,9 @@ config_version=5
 [application]
 
 config/name="1 Inf 1"
-run/main_scene="res://Spiel/game.tscn"
+run/main_scene="res://Ebenen/ebene_1.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
-
-[display]
-
-window/size/viewport_width=640
-window/size/viewport_height=360
 
 [editor]
 
