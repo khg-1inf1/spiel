@@ -10,8 +10,8 @@
 script = ExtResource("1_tdflf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(3.57628e-07, -1.78814e-07)
-scale = Vector2(20, 20)
+position = Vector2(3.57628e-07, 4.17232e-07)
+scale = Vector2(16, 16)
 texture = SubResource("CanvasTexture_txqmi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
