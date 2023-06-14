@@ -25,6 +25,7 @@ func _input(event : InputEvent):
 		game_paused =! game_paused
 		hotbar.set_visible(true) # Jan + Jonas S
 		inventory_menu.set_visible(false) # Jan + Jonas S
+		emit_signal("inv_open_modifier", 1) # Jan + Jonas S
 
 # Jan + Jonas S
 func _unhandled_input(event):
