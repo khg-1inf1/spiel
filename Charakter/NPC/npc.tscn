@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwgex1jlhcxfi"]
+
+[ext_resource type="Script" path="res://Charakter/NPC/npc.gd" id="1_hbv0y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1jl8f"]
+size = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5ojcy"]
+radius = 20.025
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_yi4p2"]
+
+[node name="NPC" type="CharacterBody2D"]
+script = ExtResource("1_hbv0y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1jl8f")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_5ojcy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(16, 16)
+texture = SubResource("PlaceholderTexture2D_yi4p2")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
