@@ -108,3 +108,7 @@ func show_tooltip(index):
 # Jan
 func hide_tooltip():
 	tooltip.hide()
+
+
+func _on_outdoor_pressed():
+	pass # Replace with function body.
