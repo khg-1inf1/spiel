@@ -18,6 +18,7 @@ func _ready():
 	items[3] = ItemManager.get_item_by_key("apple")
 	items[4] = ItemManager.get_item_by_key("potion")
 
+
 func broadcast_signal(indexes):
 	emit_signal("items_changed", indexes)
 	for index in indexes:
@@ -51,3 +52,8 @@ func set_selected(new_selected):
 func get_selected():
 	return items[selected]
 
+func get_items() :
+	return items
+
+func set_items(data) :
+	items = data

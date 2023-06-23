@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dav4k8rkrryuj"]
+[gd_scene load_steps=8 format=3 uid="uid://dav4k8rkrryuj"]
 
 [ext_resource type="Script" path="res://Ebenen/ebene_1.gd" id="1_iah7s"]
 [ext_resource type="PackedScene" uid="uid://dqcwu346fpfq3" path="res://GameManager/gameManager.tscn" id="1_kdxpt"]
@@ -48,12 +48,12 @@ texture = ExtResource("3_57yjf")
 [sub_resource type="TileSet" id="TileSet_82d7f"]
 sources/0 = SubResource("TileSetAtlasSource_e6wkl")
 
-[node name="Ebene1" type="Node2D"]
+[node name="Ebene1" type="Node2D" groups=["Persist"]]
 script = ExtResource("1_iah7s")
 
 [node name="GameManager" parent="." instance=ExtResource("1_kdxpt")]
 
-[node name="Spieler" parent="." instance=ExtResource("2_bjkro")]
+[node name="Spieler" parent="." groups=["Persist"] instance=ExtResource("2_bjkro")]
 z_index = 1
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Spieler"]
@@ -77,7 +77,7 @@ text = "go into the door"
 offset_right = 40.0
 offset_bottom = 23.0
 
-[connection signal="pressed" from="outdoor" to="." method="_on_outdoor_pressed"]
-
 [node name="NPC" parent="." instance=ExtResource("4_d6lvn")]
 position = Vector2(-57, -29)
+
+[connection signal="pressed" from="outdoor" to="." method="_on_outdoor_pressed"]

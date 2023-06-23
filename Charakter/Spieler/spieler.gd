@@ -30,4 +30,15 @@ func _physics_process(_delta):
 	move_and_slide()
 	# Bewegung des Spielers wird ausgeführt
 
+func save():
+	var save_dict = {
+		"filename" : get_scene_file_path(),
+		"parent" : get_parent().get_path(),
+		"pos_x" : position.x,
+		"pos_y" : position.y
+	}
+	return save_dict
 
+func load_pos(saved_pos_x, saved_pos_y):
+	position.x = saved_pos_x
+	position.y = saved_pos_y

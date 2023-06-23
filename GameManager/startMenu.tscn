@@ -39,9 +39,13 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "Game"
 
-[node name="play" type="Button" parent="VBoxContainer"]
+[node name="new" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "Play"
+text = "New Game"
+
+[node name="load" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Load Game"
 
 [node name="options" type="Button" parent="VBoxContainer"]
 visible = false
@@ -52,6 +56,7 @@ text = "Options"
 layout_mode = 2
 text = "Exit"
 
-[connection signal="pressed" from="VBoxContainer/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/new" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="VBoxContainer/options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="VBoxContainer/exit" to="." method="_on_exit_pressed"]
