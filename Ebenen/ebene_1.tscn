@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dqcwu346fpfq3" path="res://GameManager/gameManager.tscn" id="1_kdxpt"]
 [ext_resource type="PackedScene" uid="uid://chwvqha88xhg4" path="res://Charakter/Spieler/spieler.tscn" id="2_bjkro"]
 [ext_resource type="Texture2D" uid="uid://cb4c66ljnojjm" path="res://tilemaps/path tilemapv2.png" id="3_57yjf"]
+[ext_resource type="PackedScene" uid="uid://bwgex1jlhcxfi" path="res://Charakter/NPC/npc.tscn" id="4_d6lvn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e6wkl"]
 texture = ExtResource("3_57yjf")
@@ -77,3 +78,6 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [connection signal="pressed" from="outdoor" to="." method="_on_outdoor_pressed"]
+
+[node name="NPC" parent="." instance=ExtResource("4_d6lvn")]
+position = Vector2(-57, -29)

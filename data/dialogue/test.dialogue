@@ -1,0 +1,9 @@
+~ start
+
+NPC: Moin
+- Vergiss es => END
+- Moin
+	NPC: Schönes Wetter wa?
+	=> END
+
+=> END
