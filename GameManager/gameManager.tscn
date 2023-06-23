@@ -18,13 +18,9 @@ process_mode = 2
 game_manager = NodePath("../..")
 
 [node name="Hotbar" parent="CanvasLayer" instance=ExtResource("3_t4qqt")]
-process_mode = 1
 
 [node name="InventoryMenu" parent="CanvasLayer" instance=ExtResource("4_f3fcb")]
-process_mode = 1
 
 [node name="DragPreview" parent="CanvasLayer" instance=ExtResource("5_xvhq2")]
-process_mode = 1
 
 [node name="Tooltip" parent="CanvasLayer" instance=ExtResource("6_ng0nw")]
-process_mode = 1

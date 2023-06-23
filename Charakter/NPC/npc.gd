@@ -4,7 +4,7 @@ extends CharacterBody2D
 var mouseTouch: bool = false
 var areaEntered: bool = false
 #Jonas S
-func _on_area_2d_input_event(_viewport, _event, _shape_idx):
+func _on_area_2d_input_event(viewport, event, shape_idx):
 	mouseTouch = true
 #Jonas S
 func _on_area_2d_body_entered(body):
