@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://b5po3frh843m0"]
+
+[ext_resource type="Script" path="res://manager/uiManager.gd" id="1_3a77e"]
+[ext_resource type="PackedScene" uid="uid://dmp63yjsrqd47" path="res://ui/menus/inventory/hotbar/hotbar.tscn" id="2_gg5kp"]
+[ext_resource type="PackedScene" uid="uid://cexnqb0cuwap" path="res://ui/menus/pauseMenu/pause_menu.tscn" id="2_r7k8m"]
+[ext_resource type="PackedScene" uid="uid://dxg8uyvch6tv" path="res://ui/menus/inventory/invetory_menu/inventory_menu.tscn" id="3_1tkh2"]
+[ext_resource type="PackedScene" uid="uid://dlt4qyl2v3jad" path="res://ui/menus/inventory/item_slot/item_slot.tscn" id="3_3f7sr"]
+[ext_resource type="PackedScene" uid="uid://cmxgy2166b4iy" path="res://ui/menus/inventory/drag_preview/drag_preview.tscn" id="4_tyokh"]
+[ext_resource type="PackedScene" uid="uid://dv0ybkr15ps1v" path="res://ui/menus/inventory/tooltip/tooltip.tscn" id="5_8r4k6"]
+
+[node name="userInterface" type="Node"]
+process_mode = 3
+script = ExtResource("1_3a77e")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 1
+
+[node name="PauseMenu" parent="CanvasLayer" node_paths=PackedStringArray("ui_manager") instance=ExtResource("2_r7k8m")]
+process_mode = 2
+ui_manager = NodePath("../..")
+
+[node name="Hotbar" parent="CanvasLayer" instance=ExtResource("2_gg5kp")]
+ItemSlot = ExtResource("3_3f7sr")
+
+[node name="InventoryMenu" parent="CanvasLayer" instance=ExtResource("3_1tkh2")]
+process_mode = 3
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DragPreview" parent="CanvasLayer" instance=ExtResource("4_tyokh")]
+process_mode = 3
+
+[node name="Tooltip" parent="CanvasLayer" instance=ExtResource("5_8r4k6")]
+process_mode = 3
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)

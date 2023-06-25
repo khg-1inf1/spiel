@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dv0ybkr15ps1v"]
+
+[ext_resource type="Script" path="res://ui/menus/inventory/tooltip/tooltip.gd" id="1_3cc7k"]
+
+[node name="Tooltip" type="ColorRect"]
+script = ExtResource("1_3cc7k")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ItemName" type="Label" parent="MarginContainer"]
+layout_mode = 2
