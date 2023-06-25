@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxg8uyvch6tv"]
+
+[ext_resource type="Script" path="res://ui/menus/inventory/invetory_menu/inventory_menu.gd" id="1_adnj2"]
+[ext_resource type="PackedScene" uid="uid://dlt4qyl2v3jad" path="res://ui/menus/inventory/item_slot/item_slot.tscn" id="2_du8fy"]
+
+[node name="InventoryMenu" type="GridContainer"]
+script = ExtResource("1_adnj2")
+ItemSlot = ExtResource("2_du8fy")

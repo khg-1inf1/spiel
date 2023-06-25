@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://cmtn0rpcqfnes"]
+
+[ext_resource type="PackedScene" uid="uid://b1wha3d3u53ay" path="res://ui/menus/startMenu/start_menu.tscn" id="1_5odfy"]
+[ext_resource type="Script" path="res://manager/levelManager.gd" id="1_v0uab"]
+[ext_resource type="PackedScene" uid="uid://co7qgxqvb5b2o" path="res://characters/player/player.tscn" id="2_gl17d"]
+[ext_resource type="PackedScene" uid="uid://b5po3frh843m0" path="res://manager/userInterface.tscn" id="3_fdv57"]
+[ext_resource type="PackedScene" uid="uid://dairepayrvkj7" path="res://levels/level_1.tscn" id="4_sf55e"]
+[ext_resource type="PackedScene" uid="uid://dthycv4e168gd" path="res://levels/level_2.tscn" id="5_2o03v"]
+
+[node name="main" type="Node"]
+script = ExtResource("1_v0uab")
+
+[node name="startMenu" parent="." instance=ExtResource("1_5odfy")]
+
+[node name="player" parent="." instance=ExtResource("2_gl17d")]
+z_index = 1
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="player"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="userInterface" parent="." instance=ExtResource("3_fdv57")]
+
+[node name="level_1" parent="." instance=ExtResource("4_sf55e")]
+
+[node name="level_2" parent="." instance=ExtResource("5_2o03v")]
