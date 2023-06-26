@@ -28,7 +28,8 @@ func set_current_level(path, is_menu, x, y):
 	current_level = path
 	menu_state = is_menu
 	for i in level_nodes:
-		i.hide()
+		if i.is_visible():
+			i.hide()
 	get_node(path).show()
 	if is_menu:
 		for i in system_nodes:

@@ -55,3 +55,10 @@ func save():
 	var save_dict = {
 		"items" : items
 	}
+	return save_dict
+
+func load_items(data):
+	items = data
+	for n in 26:
+		items[n] = data[n]
+		broadcast_signal(n)

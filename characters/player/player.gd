@@ -7,7 +7,7 @@ var stop : int = 1 # Jan
 
 # Jan
 func _ready(): 
-	var ui_manager = get_node("../userInterface")
+	var _ui_manager = get_node("../userInterface")
 
 # Jonas S
 func _physics_process(_delta):

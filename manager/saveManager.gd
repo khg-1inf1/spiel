@@ -1,12 +1,20 @@
 extends Node
 
+var char_pos_x
+var char_pos_y
+var char_pos_menu
+var char_pos_lvl
+var items
+
 # Jan + Lea
 func save_game():
-	var save_game = FileAccess.open("user://save/game.save", FileAccess.WRITE)
+	var save_game = FileAccess.open("user://game.save", FileAccess.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("Persist")
 	var player_dict = {
 		"pos_x" : get_node("/root/main/player").get_position().x,
-		"pos_y" : get_node("/root/main/player").get_position().y
+		"pos_y" : get_node("/root/main/player").get_position().y,
+		"menu_state" : get_node("/root/main").get_menu_state(),
+		"level" : get_node("/root/main").get_current_level()
 	}
 	var player_string = JSON.stringify(player_dict)
 	save_game.store_line(player_string)
@@ -26,12 +34,28 @@ func save_game():
 
 # Jan + Lea
 func load_game():
-	if not FileAccess.file_exists("user://save/game.save"):
+	if not FileAccess.file_exists("user://game.save"):
 		return
-	var save_nodes = get_tree().get_nodes_in_group("Persist")
-	for i in save_nodes:
-		i.queue_free()
-	var save_game = FileAccess.open("user://save/game.save", FileAccess.READ)
+	var save_game = FileAccess.open("user://game.save", FileAccess.READ)
+	# Read player data
+	var pos_string = save_game.get_line()
+	var pos_json = JSON.new()
+	var pos_parse = pos_json.parse(pos_string)
+	var pos_data = pos_json.get_data()
+	char_pos_x = pos_data["pos_x"]
+	char_pos_y = pos_data["pos_y"]
+	char_pos_menu = pos_data["menu_state"]
+	char_pos_lvl = pos_data["level"]
+	
+	# Read inv data
+	var inv_string = save_game.get_line()
+	var inv_json = JSON.new()
+	var inv_parse = inv_json.parse(inv_string)
+	var inv_data = inv_json.get_data()
+	items = inv_data["items"]
+	Inventory.load_items(items)
+	
+	# Read map data
 	while save_game.get_position() < save_game.get_length():
 		var json_string = save_game.get_line()
 		var json = JSON.new()
@@ -43,10 +67,22 @@ func load_game():
 		var new_object = load(node_data["filename"]).instantiate()
 		for i in get_node(node_data["parent"]).get_children():
 			if i.name == node_data["filename"]:
-				get_node(node_data["parent"]).remove_child(i)		
+				get_node(node_data["parent"]).remove_child(i)
 		get_node(node_data["parent"]).add_child(new_object)
 		new_object.position = Vector2(node_data["pos_x"], node_data["pos_y"])
 		for i in node_data.keys():
 			if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y":
 				continue
 			new_object.set(i. node_data[i])
+		
+func get_char_pos_x():
+	return char_pos_x
+
+func get_char_pos_y():
+	return char_pos_y
+
+func get_char_pos_menu():
+	return char_pos_menu
+
+func get_char_pos_lvl():
+	return char_pos_lvl

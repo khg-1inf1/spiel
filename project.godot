@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 ItemManager="*res://manager/itemManager.gd"
 Inventory="*res://characters/player/inventory.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+SaveManager="*res://manager/saveManager.gd"
 
 [editor_plugins]
 
