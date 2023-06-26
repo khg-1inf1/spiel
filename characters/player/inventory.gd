@@ -51,3 +51,7 @@ func set_selected(new_selected):
 func get_selected():
 	return items[selected]
 
+func save():
+	var save_dict = {
+		"items" : items
+	}

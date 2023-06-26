@@ -1,6 +1,7 @@
 extends Node
 
 var current_level = ""
+var menu_state = false
 var system_nodes = []
 var level_nodes = []
 
@@ -17,9 +18,15 @@ func _ready():
 # Jan + Lea
 func get_current_level():
 	return current_level
+
+#Jan + Lea
+func get_menu_state():
+	return menu_state
+
 # Jan + Lea
 func set_current_level(path, is_menu, x, y):
 	current_level = path
+	menu_state = is_menu
 	for i in level_nodes:
 		i.hide()
 	get_node(path).show()
@@ -32,4 +39,3 @@ func set_current_level(path, is_menu, x, y):
 		var player = get_node("player")
 		player.position.x = x
 		player.position.y = y
-
