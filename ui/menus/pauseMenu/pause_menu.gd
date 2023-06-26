@@ -19,3 +19,8 @@ func _on_resume_pressed():
 func _on_exit_pressed():
 	ui_manager.game_paused = false
 	get_node("../../..").set_current_level("startMenu", true, 0, 0)
+	get_node("../../../startMenu")._ready()
+
+
+func _on_save_pressed():
+	SaveManager.save_game()

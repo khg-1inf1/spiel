@@ -51,3 +51,14 @@ func set_selected(new_selected):
 func get_selected():
 	return items[selected]
 
+func save():
+	var save_dict = {
+		"items" : items
+	}
+	return save_dict
+
+func load_items(data):
+	items = data
+	for n in 26:
+		items[n] = data[n]
+		broadcast_signal(n)
