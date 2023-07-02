@@ -58,6 +58,16 @@ down={
 
 locale/translations_pot_files=PackedStringArray("res://data/dialogue/test.dialogue")
 
+[layer_names]
+
+2d_physics/layer_1="ground"
+2d_physics/layer_2="water"
+2d_physics/layer_3="Layer 3"
+2d_physics/layer_5="Layer 5"
+2d_physics/layer_9="player"
+2d_physics/layer_10="enemy"
+2d_physics/layer_11="npc"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

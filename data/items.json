@@ -2,7 +2,8 @@
 	"sword": {
 		"name": "Sword",
 		"icon": "sword.png",
-		"stackable": false
+		"stackable": false,
+		"damage": 10
 	},
 	"armor": {
 		"name": "Armor",
