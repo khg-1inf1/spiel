@@ -25,13 +25,17 @@ func set_current_level(path, is_menu, x, y):
 	menu_state = is_menu
 	for i in get_children():
 		i.hide()
+		i.process_mode = 4
 	get_node(path).show()
+	get_node(path).process_mode = 0
 	if is_menu:
 		for i in system_nodes:
 			i.hide()
+			i.process_mode = 4
 	else:
 		for i in system_nodes:
 			i.show()
+			i.process_mode = 0
 		var player = get_node("player")
 		player.position.x = x
 		player.position.y = y
