@@ -5,9 +5,6 @@ extends CharacterBody2D
 
 var stop : int = 1 # Jan
 
-func isPlayer():
-	pass
-
 # Jan
 func _ready(): 
 	var _ui_manager = get_node("../userInterface")
