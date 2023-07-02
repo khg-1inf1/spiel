@@ -12,7 +12,7 @@ func isPlayer():
 func _ready(): 
 	var _ui_manager = get_node("../userInterface")
 
-# Jonas S
+# Jonas
 func _physics_process(_delta):
 	# prozess der mit Simulationsgeschwindigkeit läuft
 	
