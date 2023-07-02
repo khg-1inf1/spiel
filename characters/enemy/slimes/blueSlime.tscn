@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnjnojcuqdnx2"]
+
+[ext_resource type="Script" path="res://characters/enemy/slimes/BlueSlime.gd" id="1_tisow"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5o1dn"]
+size = Vector2(8, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h6h4g"]
+radius = 64.0078
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bt21a"]
+radius = 7.0
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ikqit"]
+
+[node name="BlueSlime" type="CharacterBody2D"]
+z_index = 1
+collision_layer = 512
+collision_mask = 769
+script = ExtResource("1_tisow")
+speed = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5o1dn")
+one_way_collision_margin = 0.0
+debug_color = Color(0.0901961, 0.6, 1, 0.419608)
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+
+[node name="detectionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detectionArea"]
+shape = SubResource("CircleShape2D_h6h4g")
+debug_color = Color(0.513726, 0.513726, 0.513726, 0.419608)
+
+[node name="hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_bt21a")
+debug_color = Color(0, 0.635294, 0.423529, 0.419608)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+texture = SubResource("PlaceholderTexture2D_ikqit")
+
+[connection signal="area_entered" from="detectionArea" to="." method="_on_detection_area_area_entered"]
+[connection signal="body_entered" from="detectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="detectionArea" to="." method="_on_detection_area_body_exited"]

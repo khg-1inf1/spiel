@@ -11,6 +11,8 @@ radius = 18.1108
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_re3cb"]
 
 [node name="test_npc" type="CharacterBody2D"]
+collision_layer = 1024
+collision_mask = 1795
 script = ExtResource("1_bkxwg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
