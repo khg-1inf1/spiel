@@ -23,6 +23,6 @@ zoom = Vector2(3, 3)
 
 [node name="userInterface" parent="." instance=ExtResource("3_fdv57")]
 
-[node name="level_1" parent="." groups=["Persist"] instance=ExtResource("4_sf55e")]
+[node name="level_1" parent="." instance=ExtResource("4_sf55e")]
 
-[node name="level_2" parent="." groups=["Persist"] instance=ExtResource("5_2o03v")]
+[node name="level_2" parent="." instance=ExtResource("5_2o03v")]
