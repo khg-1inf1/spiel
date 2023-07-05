@@ -21,13 +21,15 @@ func get_menu_state():
 
 # Jan + Lea
 func set_current_level(path, is_menu, x, y):
-	current_level = path
+	for node in get_children():
+		if path in node.name:
+			current_level = NodePath(node.name)
 	menu_state = is_menu
 	for i in get_children():
 		i.hide()
 		i.process_mode = 4
-	get_node(path).show()
-	get_node(path).process_mode = 0
+	get_node(current_level).show()
+	get_node(current_level).process_mode = 0
 	if is_menu:
 		for i in system_nodes:
 			i.hide()

@@ -7,6 +7,7 @@ class_name uiManager
 @onready var drag_preview = $CanvasLayer/DragPreview # Jan + Jonas S
 @onready var tooltip = $CanvasLayer/Tooltip
 
+signal invOpen(is_open : bool)
 signal toggle_game_paused(is_paused : bool) # Lea
 
 # Lea
@@ -24,6 +25,7 @@ func _input(event : InputEvent):
 		game_paused =! game_paused
 		hotbar.set_visible(true) # Jan + Jonas S
 		inventory_menu.set_visible(false) # Jan + Jonas S
+		emit_signal("invOpen", false)
 
 # Jan + Jonas S
 func _unhandled_input(event):
@@ -32,7 +34,7 @@ func _unhandled_input(event):
 			if inventory_menu.visible and drag_preview.get_dragged_item(): return
 			hotbar.visible = !hotbar.visible
 			inventory_menu.visible = !inventory_menu.visible
-			get_tree().paused = inventory_menu.visible
+			emit_signal("invOpen", inventory_menu.visible)
 			hide_tooltip()
 
 # Jan + Jonas S

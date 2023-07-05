@@ -5,6 +5,7 @@ var char_pos_y
 var char_pos_menu
 var char_pos_lvl
 var items
+var new = []
 
 # Jan + Lea
 func save_game():
@@ -36,11 +37,15 @@ func save_game():
 func load_game():
 	if not FileAccess.file_exists("user://game.save"):
 		return
+	for i in get_tree().get_nodes_in_group("Persist"):
+		if get_tree().get_nodes_in_group("Persist") != []:
+			print(str(i.name, " freed 1"))
+			i.free()
 	var save_game = FileAccess.open("user://game.save", FileAccess.READ)
 	# Read player data
 	var pos_string = save_game.get_line()
 	var pos_json = JSON.new()
-	var pos_parse = pos_json.parse(pos_string)
+	var _pos_parse = pos_json.parse(pos_string)
 	var pos_data = pos_json.get_data()
 	char_pos_x = pos_data["pos_x"]
 	char_pos_y = pos_data["pos_y"]
@@ -50,7 +55,7 @@ func load_game():
 	# Read inv data
 	var inv_string = save_game.get_line()
 	var inv_json = JSON.new()
-	var inv_parse = inv_json.parse(inv_string)
+	var _inv_parse = inv_json.parse(inv_string)
 	var inv_data = inv_json.get_data()
 	items = inv_data["items"]
 	Inventory.load_items(items)
@@ -64,17 +69,26 @@ func load_game():
 			print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
 			continue
 		var node_data = json.get_data()
+		var children = get_node(node_data["parent"]).get_children()
+		for ch in children:
+			if ch.get_groups().has("Persist"):
+				if !new.has(ch):
+					print(str(ch.name, " freed 2"))
+					ch.free()
 		var new_object = load(node_data["filename"]).instantiate()
-		for i in get_node(node_data["parent"]).get_children():
-			if i.name == node_data["filename"]:
-				get_node(node_data["parent"]).remove_child(i)
-		get_node(node_data["parent"]).add_child(new_object)
+		new.append(new_object)
+		print(str(new_object.name, " instantiated"))
+		
+		new_object.name = node_data["filename"].split("/")[-1].split(".")[0]
+		get_node(node_data["parent"]).add_child(new_object, true)
+		
+		
 		new_object.position = Vector2(node_data["pos_x"], node_data["pos_y"])
 		for i in node_data.keys():
 			if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y":
 				continue
-			new_object.set(i. node_data[i])
-		
+			new_object.set(i, node_data[i])
+
 func get_char_pos_x():
 	return char_pos_x
 
