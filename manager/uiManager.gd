@@ -20,10 +20,17 @@ var game_paused : bool = false:
 		emit_signal("toggle_game_paused", game_paused)
 
 # Lea
+var hotvis : bool = true:
+	get:
+		return hotvis
+	set(value):
+		hotvis = value
+		hotbar.set_visible(value)
+
+# Lea
 func _input(event : InputEvent):
 	if(event.is_action_pressed("ui_cancel")):
 		game_paused =! game_paused
-		hotbar.set_visible(true) # Jan + Jonas S
 		inventory_menu.set_visible(false) # Jan + Jonas S
 		emit_signal("invOpen", false)
 

@@ -9,8 +9,10 @@ func _ready():
 func _on_ui_manager_paused(is_paused : bool):
 	if(is_paused):
 		show()
+		ui_manager.hotvis = false
 	else:
 		hide()
+		ui_manager.hotvis = true
 
 func _on_resume_pressed():
 	ui_manager.game_paused = false
