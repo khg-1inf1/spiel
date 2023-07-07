@@ -39,7 +39,6 @@ func load_game():
 		return
 	for i in get_tree().get_nodes_in_group("Persist"):
 		if get_tree().get_nodes_in_group("Persist") != []:
-			print(str(i.name, " freed 1"))
 			i.free()
 	var save_game = FileAccess.open("user://game.save", FileAccess.READ)
 	# Read player data
@@ -73,11 +72,9 @@ func load_game():
 		for ch in children:
 			if ch.get_groups().has("Persist"):
 				if !new.has(ch):
-					print(str(ch.name, " freed 2"))
 					ch.free()
 		var new_object = load(node_data["filename"]).instantiate()
 		new.append(new_object)
-		print(str(new_object.name, " instantiated"))
 		
 		new_object.name = node_data["filename"].split("/")[-1].split(".")[0]
 		get_node(node_data["parent"]).add_child(new_object, true)
