@@ -9,6 +9,8 @@ var stop : int = 1 # Jan
 var takeDamage : bool = false # Jonas
 var enemy
 var attack = true
+var right = Vector2(22,0)
+var left = Vector2(0,0)
 
 # Jan
 func _ready(): 
@@ -58,16 +60,21 @@ func updateAnimation():
 		var direction = "right"
 		if velocity.x < 0: direction = "left"
 		animations.play("Walk_" + direction)
-
+# Jonas S
 func _input(event : InputEvent):
-	if (event is InputEventMouseButton && attack):
+	if (event is InputEventMouseButton):
 		$AttackBox/CollisionShape2D.disabled = false
-		attack = false
-		$AttackDuration.start(0.5)
-
+		$AttackDuration.start(0.2)
+		$AttackBox/AnimationPlayer.play("attack")
+	if event.is_action_pressed("right"):
+		$AttackBox.position = right
+		$AttackBox/Weapon.set_flip_h(true)
+	if event.is_action_pressed("left"):
+		$AttackBox.position = left
+		$AttackBox/Weapon.set_flip_h(false)
+#Jonas S
 func _on_attack_duration_timeout():
 	$AttackBox/CollisionShape2D.disabled = true
-	
 
 # Jonas
 func _on_hitbox_body_entered(body):

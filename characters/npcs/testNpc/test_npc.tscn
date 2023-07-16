@@ -6,7 +6,7 @@
 size = Vector2(16, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wxj1n"]
-radius = 18.1108
+radius = 45.0
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_re3cb"]
 
