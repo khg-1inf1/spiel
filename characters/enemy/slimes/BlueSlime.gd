@@ -5,7 +5,6 @@ extends CharacterBody2D
 var chasePlayer = false
 var player = null
 var health = 50
-var takeDamage = false
 var enemy
 var once = true
 #Jonas S
@@ -35,25 +34,23 @@ func save():
 	return save_dict
 
 func _on_hitbox_area_entered(area):
-	takeDamage = true
 	enemy = area
+	takeDamage()
 func _on_hitbox_area_exited(_area):
-	takeDamage = false
 	enemy = null
-func _on_hit_timer_timeout():
+func takeDamage():
 	if health == 0:
 		die()
-	elif takeDamage == true:
+	else:
 		health = health - 25
-	$HitTimer.start()
 func die():
 	print("slime died")
 	if(once):
+		$CollisionShape2D.call_deferred("set_disabled", true)
 		$GPUParticles2D.restart()
 		$DeathTimer.start()
 		once = false
 		$Sprite2D.hide()
-		$CollisionShape2D.disabled = true
 
 func _on_death_timer_timeout():
 	self.queue_free()

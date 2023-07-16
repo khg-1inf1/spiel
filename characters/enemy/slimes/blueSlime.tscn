@@ -63,9 +63,6 @@ collision_mask = 2048
 shape = SubResource("CircleShape2D_bt21a")
 debug_color = Color(0, 0.635294, 0.423529, 0.419608)
 
-[node name="HitTimer" type="Timer" parent="."]
-autostart = true
-
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 5.0
 
@@ -83,5 +80,4 @@ visibility_rect = Rect2(0, 0, 0, 0)
 [connection signal="body_exited" from="detectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="area_exited" from="hitbox" to="." method="_on_hitbox_area_exited"]
-[connection signal="timeout" from="HitTimer" to="." method="_on_hit_timer_timeout"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

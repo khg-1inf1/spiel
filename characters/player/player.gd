@@ -8,6 +8,7 @@ var health : int = 100 # Jonas
 var stop : int = 1 # Jan
 var takeDamage : bool = false # Jonas
 var enemy
+var attack = true
 
 # Jan
 func _ready(): 
@@ -57,6 +58,16 @@ func updateAnimation():
 		var direction = "right"
 		if velocity.x < 0: direction = "left"
 		animations.play("Walk_" + direction)
+
+func _input(event : InputEvent):
+	if (event is InputEventMouseButton && attack):
+		$AttackBox/CollisionShape2D.disabled = false
+		attack = false
+		$AttackDuration.start(0.5)
+
+func _on_attack_duration_timeout():
+	$AttackBox/CollisionShape2D.disabled = true
+	
 
 # Jonas
 func _on_hitbox_body_entered(body):
