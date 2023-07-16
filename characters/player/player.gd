@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var geschwindigkeit : float = 100 # Jonas S
 # Variable geschwinigkeit ist vom Editor zugänglich
+@onready var animations = $AnimationPlayer #Anja
 
 var stop : int = 1 # Jan
 
@@ -24,6 +25,8 @@ func _physics_process(_delta):
 	
 	move_and_slide()
 	# Bewegung des Spielers wird ausgeführt
+	updateAnimation() #Anja
+	#Rechts/Links Animation
 
 func save():
 	var save_dict = {
@@ -42,3 +45,14 @@ func _on_inv_open(a):
 
 func get_pos():
 	return position
+	
+#Anja
+func updateAnimation():
+	if velocity.length() == 0:
+		animations.stop()
+	else:
+		var direction = "right"
+		if velocity.x < 0: direction = "left"
+	
+	
+		animations.play("Walk_" + direction)
