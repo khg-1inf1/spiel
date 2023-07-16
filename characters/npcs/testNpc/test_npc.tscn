@@ -21,6 +21,7 @@ script = ExtResource("1_bkxwg")
 shape = SubResource("RectangleShape2D_4j3jm")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_mask = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_wxj1n")

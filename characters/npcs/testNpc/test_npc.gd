@@ -20,3 +20,4 @@ func _input(event : InputEvent):
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			DialogueManager.show_example_dialogue_balloon(load("res://data/dialogue/test.dialogue"), "start")
 			mouseTouch = false
+			areaEntered = false

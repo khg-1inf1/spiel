@@ -4,13 +4,16 @@ extends CharacterBody2D
 # Variable geschwinigkeit ist vom Editor zugänglich
 @onready var animations = $AnimationPlayer #Anja
 
+var health : int = 100 # Jonas
 var stop : int = 1 # Jan
+var takeDamage : bool = false # Jonas
+var enemy
 
 # Jan
 func _ready(): 
 	var ui_manager = get_node("../userInterface")
 	ui_manager.connect("invOpen", _on_inv_open)
-	
+
 # Jonas
 func _physics_process(_delta):
 	# prozess der mit Simulationsgeschwindigkeit läuft
@@ -45,7 +48,7 @@ func _on_inv_open(a):
 
 func get_pos():
 	return position
-	
+
 #Anja
 func updateAnimation():
 	if velocity.length() == 0:
@@ -53,6 +56,20 @@ func updateAnimation():
 	else:
 		var direction = "right"
 		if velocity.x < 0: direction = "left"
-	
-	
 		animations.play("Walk_" + direction)
+
+# Jonas
+func _on_hitbox_body_entered(body):
+	takeDamage = true
+	enemy = body
+func _on_hitbox_body_exited(_body):
+	takeDamage = false
+	enemy = null
+func _on_hit_timer_timeout():
+	if health == 0:
+		die()
+	elif takeDamage == true:
+		health = health - 25
+	$HitTimer.start()
+func die():
+	print("you died")
