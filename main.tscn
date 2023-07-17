@@ -19,7 +19,7 @@ z_index = 1
 remote_path = NodePath("../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
+zoom = Vector2(4, 4)
 
 [node name="userInterface" parent="." instance=ExtResource("3_fdv57")]
 
