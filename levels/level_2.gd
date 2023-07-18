@@ -16,11 +16,9 @@ func save():
 @warning_ignore("native_method_override")
 func hide():
 	get_node("TileMap").get_tileset().set_physics_layer_collision_layer(1, 0)
-	print(get_node("TileMap").get_tileset().get_physics_layer_collision_layer(1))
 	super.hide()
 
 @warning_ignore("native_method_override")
 func show():
 	get_node("TileMap").get_tileset().set_physics_layer_collision_layer(1, 2)
-	print(get_node("TileMap").get_tileset().get_physics_layer_collision_layer(1))
 	super.show()

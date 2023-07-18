@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 func _on_new_pressed():
-	get_node("..").set_current_level("level_1", false, 0, 0)
+	get_node("..").set_current_level("noticeMenu", true, 0, 0)
 
 func _on_load_pressed():
 	SaveManager.load_game()

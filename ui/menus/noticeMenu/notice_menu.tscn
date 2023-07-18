@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://xr620erb7s6y"]
+
+[ext_resource type="Texture2D" uid="uid://b2jqv5lm2iglv" path="res://graphics/images/backgrounds/notice.png" id="1_28fto"]
+[ext_resource type="Script" path="res://ui/menus/noticeMenu/notice_menu.gd" id="1_fsu5h"]
+[ext_resource type="Script" path="res://ui/menus/noticeMenu/Notice.gd" id="2_jk7av"]
+
+[node name="noticeMenu" type="CanvasLayer"]
+script = ExtResource("1_fsu5h")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Notice" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(0.25, 61.5)
+scale = Vector2(1.00049, 1.18035)
+texture = ExtResource("1_28fto")
+script = ExtResource("2_jk7av")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+z_index = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -376.0
+offset_top = -274.0
+offset_right = 374.0
+offset_bottom = 468.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[color=black]Dear folk,
+[fill]
+certainty all of you have heard about the tragic happenings all over the queendom. Those demonic attacks, that lead to the death of too many, are not stopping how it seems. Of cause all our wishes are with the victims and their family.
+But those attacks are not the singular reason for this writing to be transmitted everywhere. As there are already suspicions that the attacks are connected to Anaili, the twin of our princess and soon our queen Iliana, we, the royal counselors, decided to promulgate that we share those believes.  
+Of course, we are not able to know for sure that Anaili is practicing such dark, destructive, and demonic magic, but there are signs for it, like the first attacks being only shortly after Anaili angrily left the castle because of a failed discussion about the throne with our beloved princess and real heir to the throne Iliana. There are other hints that lead us to the assumption that Anaili is at least somehow involved in the attacks, that we can´t publish yet. We hope you can accept this for now.
+Now you might ask yourself, why we decide to speak up about all this now out of all times. As the coronation of Iliana is near and the tragic attacks have reached a new high our princess hopes to find people who are out for an adventure. She hopes that some of you might want to help the royal house to beat those attacks and make sure that the coronation can happen with out problems. 
+That is the reason why we offer a quick training session and a high reward for all volunteers who are ready to fight for the queendom and for what is right.
+If you are brave and out on the hint for an adventure that might just be your time.
+[/fill]"
+fit_content = true
+
+[node name="ready" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Are you ready?"
+
+[connection signal="pressed" from="VBoxContainer/ready" to="." method="_on_ready_pressed"]
