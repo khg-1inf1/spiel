@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_pmu22"]
 [ext_resource type="Texture2D" uid="uid://nvi2o8c2je0b" path="res://graphics/images/Player/Player_Walk.png" id="2_0bokj"]
-[ext_resource type="Texture2D" uid="uid://duosarj5bu8tb" path="res://graphics/images/items/Sword.png" id="3_ho4pc"]
+[ext_resource type="Texture2D" uid="uid://duosarj5bu8tb" path="res://graphics/images/items/sword.png" id="3_ho4pc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m13ji"]
 radius = 7.5

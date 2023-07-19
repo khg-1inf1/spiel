@@ -60,12 +60,20 @@ func updateAnimation():
 		var direction = "right"
 		if velocity.x < 0: direction = "left"
 		animations.play("Walk_" + direction)
+	if Inventory.get_selected() == {}:
+		get_node("AttackBox/Weapon").set_texture(null)
+	else:
+		get_node("AttackBox/Weapon").set_texture(load("res://graphics/images/items/animations/%s" % Inventory.get_selected().icon))
 # Jonas S
 func _input(event : InputEvent):
 	if (event is InputEventMouseButton):
-		$AttackBox/CollisionShape2D.disabled = false
-		$AttackDuration.start(0.2)
-		$AttackBox/AnimationPlayer.play("attack")
+		if Inventory.get_selected() == {}:
+			return
+		if Inventory.get_selected().damage > 0:
+			if event.button_index == MOUSE_BUTTON_LEFT:
+				$AttackBox/CollisionShape2D.disabled = false
+				$AttackDuration.start(0.2)
+				$AttackBox/AnimationPlayer.play("attack")
 	if event.is_action_pressed("right"):
 		$AttackBox.position = right
 		$AttackBox/Weapon.set_flip_h(true)
