@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmtn0rpcqfnes"]
+[gd_scene load_steps=8 format=3 uid="uid://cmtn0rpcqfnes"]
 
 [ext_resource type="PackedScene" uid="uid://b1wha3d3u53ay" path="res://ui/menus/startMenu/start_menu.tscn" id="1_5odfy"]
 [ext_resource type="Script" path="res://manager/levelManager.gd" id="1_v0uab"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b5po3frh843m0" path="res://manager/userInterface.tscn" id="3_fdv57"]
 [ext_resource type="PackedScene" uid="uid://dairepayrvkj7" path="res://levels/level_1.tscn" id="4_sf55e"]
 [ext_resource type="PackedScene" uid="uid://dthycv4e168gd" path="res://levels/level_2.tscn" id="5_2o03v"]
+[ext_resource type="PackedScene" uid="uid://xr620erb7s6y" path="res://ui/menus/noticeMenu/notice_menu.tscn" id="7_vd3nd"]
 
 [node name="main" type="Node"]
 script = ExtResource("1_v0uab")
@@ -26,3 +27,5 @@ zoom = Vector2(4, 4)
 [node name="level_1" parent="." instance=ExtResource("4_sf55e")]
 
 [node name="level_2" parent="." instance=ExtResource("5_2o03v")]
+
+[node name="noticeMenu" parent="." instance=ExtResource("7_vd3nd")]
