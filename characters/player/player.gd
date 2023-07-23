@@ -13,6 +13,7 @@ var attack = true
 var right = Vector2(0,0)
 var left = Vector2(-22,0)
 var maxHealth = 100
+var play
 
 # Jan
 func _ready(): 
@@ -27,6 +28,10 @@ func _physics_process(_delta):
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
 		Input.get_action_strength("down") - Input.get_action_strength("up")
 	)
+	
+	if tastenrichtung != Vector2(0, 0) and !play:
+		get_node("walkPlayer").play()
+		play = true
 	# Variable geschwindigkeit wird durch Tastendruck gesetzt
 	
 	velocity = tastenrichtung * geschwindigkeit * stop
@@ -97,6 +102,7 @@ func consumable():
 	if(consume):
 		if Inventory.get_selected().potion == true:
 			$AttackBox/AnimationPlayer.play("drink")
+			get_node("drinkPlayer").play()
 			health = health + Inventory.get_selected().health
 			if health > maxHealth:
 				health = maxHealth
@@ -127,3 +133,7 @@ func die():
 	$HealthBar.value = health
 	print("you died")
 	get_node("..").set_current_level("deathMenu", true, 0, 0)
+
+
+func _on_audio_stream_player_finished():
+	play = false

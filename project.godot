@@ -21,6 +21,7 @@ ItemManager="*res://manager/itemManager.gd"
 Inventory="*res://characters/player/inventory.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 SaveManager="*res://manager/saveManager.gd"
+BackgroundPlayer="*res://sounds/background_player.tscn"
 
 [editor_plugins]
 
