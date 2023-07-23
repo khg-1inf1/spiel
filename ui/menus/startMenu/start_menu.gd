@@ -15,7 +15,7 @@ func _on_exit_pressed():
 
 func _on_delete_pressed():
 	DirAccess.remove_absolute("user://game.save")
-	_ready()
+	get_tree().quit()
 
 func _ready():
 	if FileAccess.file_exists("user://game.save"):

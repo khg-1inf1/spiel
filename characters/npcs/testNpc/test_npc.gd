@@ -24,6 +24,7 @@ func _input(event : InputEvent):
 			if state == 3:
 				DialogueManager.show_example_dialogue_balloon(load("res://data/dialogue/tutorial_portal.dialogue"), "start")
 				get_node("../portal").show()
+				get_node("../portal").process_mode = 0
 			mouseTouch = false
 			areaEntered = false
 

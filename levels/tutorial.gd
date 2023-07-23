@@ -1,5 +1,7 @@
 extends Node2D
 
+func _ready():
+	get_node("portal").process_mode = 4
 
 func save():
 	var save_dict = {
