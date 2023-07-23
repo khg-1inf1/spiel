@@ -26,3 +26,13 @@ func _input(event : InputEvent):
 				get_node("../portal").show()
 			mouseTouch = false
 			areaEntered = false
+
+func save():
+	var save_dict = {
+		"filename" : get_scene_file_path(),
+		"parent" : get_parent().get_path(),
+		"pos_x" : position.x,
+		"pos_y" : position.y,
+		"state" : state
+	}
+	return save_dict

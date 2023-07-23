@@ -46,7 +46,7 @@ func takeDamage():
 func die():
 	if(once):
 		if get_parent().name == "tutorial":
-			get_node("../tut_npc").state = get_node("../tut_npc").state + 1
+			get_node("/root/main/tutorial/tut_npc").state = get_node("/root/main/tutorial/tut_npc").state + 1
 		$CollisionShape2D.call_deferred("set_disabled", true)
 		$GPUParticles2D.restart()
 		$DeathTimer.start()

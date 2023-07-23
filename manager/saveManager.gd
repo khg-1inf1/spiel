@@ -39,7 +39,7 @@ func load_game():
 		return
 	for i in get_tree().get_nodes_in_group("Persist"):
 		if get_tree().get_nodes_in_group("Persist") != []:
-			i.free()
+			i.queue_free()
 	var save_game = FileAccess.open("user://game.save", FileAccess.READ)
 	# Read player data
 	var pos_string = save_game.get_line()
