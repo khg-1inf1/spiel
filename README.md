@@ -10,9 +10,9 @@ https://desktop.github.com/
 # GitHub Software EINMALIG einstellen
 ## Dieses Repository "Forken"!
 ### Oben Rechts Fork
-[grafik](https://github.com/khg-1inf1/spiel/assets/46094961/cb600603-c552-44a3-91fc-b0d08823fba5)
+![grafik](https://github.com/khg-1inf1/spiel/assets/46094961/cb600603-c552-44a3-91fc-b0d08823fba5)
 ### Einstellungen beibehalten und "Create Fork"
-[grafik](https://github.com/khg-1inf1/spiel/assets/46094961/cb600603-c552-44a3-91fc-b0d08823fba5)
+![grafik](https://github.com/khg-1inf1/spiel/assets/46094961/cb600603-c552-44a3-91fc-b0d08823fba5)
 ### Warten
 ## In GitHub Desktop Software:
 ### Clone a repository from the Internet...
