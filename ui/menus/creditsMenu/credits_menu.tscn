@@ -90,9 +90,11 @@ Herr Krusch - Being patient and somehow holding everything together
 "
 fit_content = true
 
-[node name="exit" type="Button" parent="VBoxContainer"]
-layout_mode = 2
+[node name="exit" type="Button" parent="."]
+visible = false
+offset_right = 1152.0
+offset_bottom = 31.0
 text = "Exit
 "
 
-[connection signal="pressed" from="VBoxContainer/exit" to="VBoxContainer" method="_on_exit_pressed"]
+[connection signal="pressed" from="exit" to="VBoxContainer" method="_on_exit_pressed"]
