@@ -2,8 +2,7 @@
 
 [ext_resource type="Script" path="res://characters/enemy/slimes/BlueSlime.gd" id="1_tisow"]
 [ext_resource type="Texture2D" uid="uid://cra7ah5nec2as" path="res://graphics/images/items/apple.png" id="2_1cc7a"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jr0b4"]
+[ext_resource type="Texture2D" uid="uid://ct6nwutw1hss4" path="res://graphics/images/enemies/slime.png" id="2_yllxh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7trjj"]
 radius = 5.0
@@ -39,10 +38,10 @@ script = ExtResource("1_tisow")
 speed = 15
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(8, 8)
-texture = SubResource("PlaceholderTexture2D_jr0b4")
+texture = ExtResource("2_yllxh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.01, 0.01)
 shape = SubResource("CapsuleShape2D_7trjj")
 one_way_collision_margin = 0.0
 debug_color = Color(0.0901961, 0.6, 1, 0.419608)
