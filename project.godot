@@ -56,7 +56,7 @@ down={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://data/dialogue/test.dialogue")
+locale/translations_pot_files=PackedStringArray("res://data/dialogue/test.dialogue", "res://data/dialogue/tutorial.dialogue", "res://data/dialogue/tutorial_start.dialogue", "res://data/dialogue/tutorial_slime.dialogue", "res://data/dialogue/tutorial_portal.dialogue")
 
 [layer_names]
 

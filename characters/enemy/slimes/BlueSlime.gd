@@ -44,8 +44,9 @@ func takeDamage():
 	else:
 		health = health - 25
 func die():
-	print("slime died")
 	if(once):
+		if get_parent().name == "tutorial":
+			get_node("/root/main/tutorial/tut_npc").state = get_node("/root/main/tutorial/tut_npc").state + 1
 		$CollisionShape2D.call_deferred("set_disabled", true)
 		$GPUParticles2D.restart()
 		$DeathTimer.start()

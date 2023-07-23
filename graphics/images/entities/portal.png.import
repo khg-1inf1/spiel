@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3i1nyg6yqfft"
-path="res://.godot/imported/potion.png-672b5f3a5b1290e32bd036bcbe36be84.ctex"
+uid="uid://bbuat6v5cd6uc"
+path="res://.godot/imported/portal.png-3f22cf4a46632bae02164c9847e50a5c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/images/items/potion.png"
-dest_files=["res://.godot/imported/potion.png-672b5f3a5b1290e32bd036bcbe36be84.ctex"]
+source_file="res://graphics/images/entities/portal.png"
+dest_files=["res://.godot/imported/portal.png-3f22cf4a46632bae02164c9847e50a5c.ctex"]
 
 [params]
 
