@@ -16,6 +16,7 @@ var left = Vector2(0,0)
 func _ready(): 
 	var ui_manager = get_node("../userInterface")
 	ui_manager.connect("invOpen", _on_inv_open)
+	$HealthBar.value = health
 
 # Jonas
 func _physics_process(_delta):
@@ -96,6 +97,12 @@ func _on_hit_timer_timeout():
 		die()
 	elif takeDamage == true:
 		health = health - 25
+		$HealthBar.value = health
+		if health == 0:
+			die()
 	$HitTimer.start()
 func die():
+	health = 100
+	$HealthBar.value = health
 	print("you died")
+	get_node("..").set_current_level("deathMenu", true, 0, 0)
