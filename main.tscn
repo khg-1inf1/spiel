@@ -35,6 +35,6 @@ zoom = Vector2(4, 4)
 
 [node name="tutorial" parent="." instance=ExtResource("8_bshhw")]
 
-[node name="deathMenu" parent="." instance=ExtResource("9_ritnb")]
+[node name="creditsMenu" parent="." instance=ExtResource("9_tnxal")]
 
-[node name="creditsMenu" parent="." instance=ExtResource("10_tnxal")]
+[node name="deathMenu" parent="." instance=ExtResource("10_ritnb")]
