@@ -8,9 +8,11 @@ var health : int = 100 # Jonas
 var stop : int = 1 # Jan
 var takeDamage : bool = false # Jonas
 var enemy
+var consume = true
 var attack = true
-var right = Vector2(22,0)
-var left = Vector2(0,0)
+var right = Vector2(0,0)
+var left = Vector2(-22,0)
+var maxHealth = 100
 
 # Jan
 func _ready(): 
@@ -66,7 +68,13 @@ func updateAnimation():
 		get_node("AttackBox/Weapon").set_texture(load("res://graphics/images/items/animations/%s" % Inventory.get_selected().icon))
 # Jonas S
 func _input(event : InputEvent):
-	if (event is InputEventMouseButton):
+	if (event is InputEventMouseButton && event.pressed && consume && attack):
+		$AttackBox/AnimationPlayer.play("idle")
+		if Inventory.get_selected() == {}:
+			return
+		if Inventory.get_selected().consumable == true:
+			if event.button_index == MOUSE_BUTTON_LEFT:
+				consumable()
 		if Inventory.get_selected() == {}:
 			return
 		if Inventory.get_selected().damage > 0:
@@ -76,15 +84,27 @@ func _input(event : InputEvent):
 				$AttackBox/AnimationPlayer.play("attack")
 	if event.is_action_pressed("right"):
 		$AttackBox.position = right
-		$AttackBox/Weapon.set_flip_h(true)
+		$AttackBox/Weapon.set_flip_h(false)
 	if event.is_action_pressed("left"):
 		$AttackBox.position = left
-		$AttackBox/Weapon.set_flip_h(false)
+		$AttackBox/Weapon.set_flip_h(true)
 #Jonas S
 func _on_attack_duration_timeout():
 	$AttackBox/CollisionShape2D.disabled = true
-
+# Jonas S
+func consumable():
+	if(consume):
+		if Inventory.get_selected().potion == true:
+			$AttackBox/AnimationPlayer.play("drink")
+			health = health + Inventory.get_selected().health
+			if health > maxHealth:
+				health = maxHealth
+			Inventory.set_item_quantity(Inventory.selected,  -1)
+			consume = false
+			$ConsumeDuration.start()
 # Jonas
+func _on_consume_duration_timeout():
+	consume = true
 func _on_hitbox_body_entered(body):
 	takeDamage = true
 	enemy = body
@@ -99,3 +119,6 @@ func _on_hit_timer_timeout():
 	$HitTimer.start()
 func die():
 	print("you died")
+
+
+

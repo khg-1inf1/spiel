@@ -1,18 +1,21 @@
 {
 	"sword": {
 		"name": "Sword",
+		"consumable": false,
 		"icon": "sword.png",
 		"stackable": false,
 		"damage": 10
 	},
 	"armor": {
 		"name": "Armor",
+		"consumable": false,
 		"icon": "armor.png",
 		"stackable": false,
 		"damage": 0
 	},
 	"apple": {
 		"name": "Apple",
+		"consumable": true,
 		"icon": "apple.png",
 		"stackable": true,
 		"quantity": 1,
@@ -20,9 +23,12 @@
 	},
 	"potion": {
 		"name": "Potion",
+		"potion": true,
+		"consumable": true,
 		"icon": "potion.png",
 		"stackable": true,
 		"quantity": 10,
-		"damage": 0
+		"damage": 0,
+		"health": 50
 	}
 }
