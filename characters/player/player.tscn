@@ -1,8 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://co7qgxqvb5b2o"]
+[gd_scene load_steps=16 format=3 uid="uid://co7qgxqvb5b2o"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_pmu22"]
 [ext_resource type="Texture2D" uid="uid://nvi2o8c2je0b" path="res://graphics/images/Player/Player_Walk.png" id="2_0bokj"]
-[ext_resource type="Texture2D" uid="uid://duosarj5bu8tb" path="res://graphics/images/items/sword.png" id="3_ho4pc"]
+[ext_resource type="Texture2D" uid="uid://df1l7a6w4bn6v" path="res://graphics/images/items/animations/sword.png" id="3_f5v0u"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m13ji"]
 radius = 7.5
@@ -84,6 +84,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [Vector2i(0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Weapon:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
 
 [sub_resource type="Animation" id="Animation_pryhj"]
 resource_name = "attack"
@@ -95,16 +107,49 @@ tracks/0/path = NodePath("Weapon:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_crni5"]
+resource_name = "drink"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Weapon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_pyhyc"]
+resource_name = "idle"
+length = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Weapon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fw7na"]
 _data = {
 "RESET": SubResource("Animation_d0u6t"),
-"attack": SubResource("Animation_pryhj")
+"attack": SubResource("Animation_pryhj"),
+"drink": SubResource("Animation_crni5"),
+"idle": SubResource("Animation_pyhyc")
 }
 
 [node name="player" type="CharacterBody2D"]
@@ -143,17 +188,17 @@ collision_layer = 2048
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox"]
-position = Vector2(-10, 0)
+position = Vector2(10, 0)
 shape = SubResource("CapsuleShape2D_xs33u")
 disabled = true
 debug_color = Color(0.976471, 0, 0.415686, 0.419608)
 
 [node name="Weapon" type="Sprite2D" parent="AttackBox"]
-position = Vector2(-12, 3)
-rotation = -3.139
+position = Vector2(10, 3)
 scale = Vector2(0.9375, 0.9375)
-texture = ExtResource("3_ho4pc")
+texture = ExtResource("3_f5v0u")
 hframes = 4
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AttackBox"]
 libraries = {
@@ -161,6 +206,8 @@ libraries = {
 }
 
 [node name="AttackDuration" type="Timer" parent="."]
+
+[node name="ConsumeDuration" type="Timer" parent="."]
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 modulate = Color(1, 0, 0, 1)
@@ -177,3 +224,4 @@ show_percentage = false
 [connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
 [connection signal="timeout" from="HitTimer" to="." method="_on_hit_timer_timeout"]
 [connection signal="timeout" from="AttackDuration" to="." method="_on_attack_duration_timeout"]
+[connection signal="timeout" from="ConsumeDuration" to="." method="_on_consume_duration_timeout"]
