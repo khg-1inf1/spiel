@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 func _on_area_2d_body_entered(body):
 	if body == get_node("/root/main/player"):
-		get_node("/root/main").set_current_level("level_1", false, 0, 0)
+		get_node("/root/main").set_current_level("creditsMenu", false, 0, 0)
+		get_node("/root/main/creditsMenu/VBoxContainer").move()
 
 func save():
 	var save_dict = {
