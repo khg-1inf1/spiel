@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bff56cdhycadx"]
+[gd_scene load_steps=4 format=3 uid="uid://bff56cdhycadx"]
 
 [ext_resource type="Script" path="res://ui/menus/creditsMenu/VBoxContainer.gd" id="1_wcmts"]
+[ext_resource type="AudioStream" uid="uid://yb1yoq72qbye" path="res://sounds/credits.mp3" id="2_61y6p"]
+[ext_resource type="Script" path="res://ui/menus/creditsMenu/AudioStreamPlayer.gd" id="3_swq5n"]
 
 [node name="creditsMenu" type="CanvasLayer"]
 
@@ -77,6 +79,7 @@ Jonas Stamm
 [u]Special Thanks[/u]
 Godot 4 - Engine
 Random people on Reddit - support with weird bugs
+Everyone (especially Lea) - Listening to stupid ideas Jan produces while trying to fix the weirdesd bugs imaginable
 Lessons without teacher present - Emotional Support
 
 
@@ -97,4 +100,10 @@ offset_bottom = 31.0
 text = "Exit
 "
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_61y6p")
+volume_db = -9.75
+script = ExtResource("3_swq5n")
+
 [connection signal="pressed" from="exit" to="VBoxContainer" method="_on_exit_pressed"]
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]

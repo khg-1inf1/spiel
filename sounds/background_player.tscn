@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bt7driqcblfmq"]
+
+[ext_resource type="AudioStream" uid="uid://f6wirncwfcop" path="res://sounds/background.mp3" id="1_mr84l"]
+[ext_resource type="Script" path="res://sounds/background_player.gd" id="2_72vdk"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_mr84l")
+autoplay = true
+script = ExtResource("2_72vdk")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
