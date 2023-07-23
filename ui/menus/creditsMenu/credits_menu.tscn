@@ -34,8 +34,9 @@ A game made by the 1inf1 class of Kaiser-Heinrich-Gymnasium Bamberg
 
 [b][STAFF][/b]
 
-[u]Director[/u]
+[u]Directors[/u]
 The collective hivemind (nobody)
+Patrick Krusch
 
 [u]Programming[/u]
 Lea Dannenmann
@@ -44,8 +45,8 @@ Sanja Kundmüller
 Lasse Leuchner
 Jan Lunz
 Emma Reuther
-Jonas Stamm
 Anja Schumacher
+Jonas Stamm
 
 [u]Character Design[/u]
 Jonas Kubilus
@@ -78,12 +79,22 @@ Godot 4 - Engine
 Random people on Reddit - support with weird bugs
 Lessons without teacher present - Emotional Support
 
+
+And finally:
+
+
+Herr Krusch - Being patient and somehow holding everything together
+
+
+
 "
 fit_content = true
 
-[node name="exit" type="Button" parent="VBoxContainer"]
-layout_mode = 2
+[node name="exit" type="Button" parent="."]
+visible = false
+offset_right = 1152.0
+offset_bottom = 31.0
 text = "Exit
 "
 
-[connection signal="pressed" from="VBoxContainer/exit" to="VBoxContainer" method="_on_exit_pressed"]
+[connection signal="pressed" from="exit" to="VBoxContainer" method="_on_exit_pressed"]

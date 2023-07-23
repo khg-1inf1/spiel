@@ -103,6 +103,7 @@ func consumable():
 			Inventory.set_item_quantity(Inventory.selected,  -1)
 			consume = false
 			$ConsumeDuration.start()
+			$HealthBar.value = health
 # Jonas
 func _on_consume_duration_timeout():
 	consume = true
