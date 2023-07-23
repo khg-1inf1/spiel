@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_8"
+type="Resource"
+uid="uid://dtb2ft0rmxkv0"
+path="res://.godot/imported/tutorial_slime.dialogue-7521a31194a72c98db3aa7a9d6206470.tres"
+
+[deps]
+
+source_file="res://data/dialogue/tutorial_slime.dialogue"
+dest_files=["res://.godot/imported/tutorial_slime.dialogue-7521a31194a72c98db3aa7a9d6206470.tres"]
+
+[params]
+
+defaults=true

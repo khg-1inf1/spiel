@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvg04dqj6yjb8"]
+
+[ext_resource type="Script" path="res://entities/portal.gd" id="1_1oygb"]
+[ext_resource type="Texture2D" uid="uid://bbuat6v5cd6uc" path="res://graphics/images/entities/portal.png" id="1_mhdxg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6xbsl"]
+radius = 8.0
+height = 36.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o22nq"]
+size = Vector2(2, 2)
+
+[node name="portal" type="CharacterBody2D"]
+script = ExtResource("1_1oygb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.5, -1.5)
+scale = Vector2(0.170029, 0.170029)
+texture = ExtResource("1_mhdxg")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_6xbsl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_o22nq")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
