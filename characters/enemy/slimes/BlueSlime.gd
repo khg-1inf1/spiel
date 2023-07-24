@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@onready var animations = $AnimationPlayer
 #Jonas S
 @export var speed = 10
 var chasePlayer = false
@@ -23,6 +24,7 @@ func _physics_process(_delta):
 	if chasePlayer:
 		velocity = position.direction_to(player.position)*speed
 		move_and_slide()
+	updateAnimation()
 #Jan? -Jonas S
 func save():
 	var save_dict = {
@@ -55,3 +57,6 @@ func die():
 
 func _on_death_timer_timeout():
 	self.queue_free()
+
+func updateAnimation():
+	animations.play("idle")

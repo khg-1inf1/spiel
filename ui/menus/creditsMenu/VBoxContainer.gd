@@ -6,8 +6,8 @@ func move():
 
 func _process(delta):
 	if position.y + size.y < 0:
-		get_node("../../exit").position.y = get_viewport().size.y / 2
-		get_node("../../exit").show()
+		get_node("../exit").position.y = get_viewport().size.y / 2
+		get_node("../exit").show()
 	position.y = position.y -1
 
 
